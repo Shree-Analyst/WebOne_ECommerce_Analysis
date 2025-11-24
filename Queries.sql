@@ -102,4 +102,5 @@ LEFT JOIN core.orders
   ON customers.id = orders.customer_id
 WHERE LOWER(orders.product_name) LIKE 'apple%'
   OR LOWER(orders.product_name) LIKE 'macbook%'
+
 GROUP BY 1, 2;
