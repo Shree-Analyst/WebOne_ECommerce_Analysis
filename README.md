@@ -1,131 +1,191 @@
+# Overview
+
+| Summary Component | Description |
+| :-------------: | ------ |
+| **Dataset Size** | 108k |
+| **Time Range** | 2019-2022 |
+| **Tools Used** | Excel, SQL, Tableau, VSCode |
+| **Key Metrics** | Revenue, Order Count, Average Order Value (AOV) |
+| **Outcome** | Identified 35% refund rate reduction opportunity for the Operations Team and laptop Revenue stabilisation opportunity at $2m for the Product Team. |
+
+Jump to:
+
+- [Executive Summary](#executive-summary)
+- [Insights Deep-Dive](#insights-deep-dive)
+    - [Insight 1: Sales Trends](#insight-1-trends-in-revenue-indicate-long-term-demand-normalisation)
+    - [Insight 2: Loyalty Program Performance](#insight-2-loyalty-members-generate-more-revenue-share-across-2021-2022-pointing-to-improved-loyalty-program-performance)
+    - [Insight 3: Product Mix](#insight-3-4-core-products-drive-96-of-revenue)
+    - [Insight 4: Refund Rates](#insight-4-core-products-suffer-from-high-refund-rates-leading-to-lost-revenue-over-10)
+- [Recommendations](#recommendations)
+- [Caveats & Next Steps](#caveats--next-steps)
+- [Appendix](#appendix)
+
 # Project Background
-<p align="center">
-  <img src="./Data/WebOne Gadgets Logo - Tech-Savvy Aesthetic.png" alt="WebOne Gadgets Logo" width="256" height="256">
-</p>
+<center> <img src="https://raw.githubusercontent.com/Shree-Analyst/WebOne_ECommerce_Analysis/main/WebOne%20Gadgets%20Logo.png" alt="WebOne Gadgets Logo" width="200" height="200"> </center>
 
-WebOne Gadgets is a global online e-commerce platform selling popular consumer electronics from brands like Apple, Samsung, and Lenovo since late 2018 through its website and mobile app. Its main marketing channels are SEO, email, social media, and affiliate, and it measures performance using Revenue, Order Count, and Average Order Value (AOV). Together with the Head of Operations, this analysis examines sales transactions from 2019-2022 and compares metrics across Sales Trends, Seasonality, Loyalty Program Performance, and Refund Rates.
+WebOne Gadgets is a global **e-commerce retailer that sells electronics from popular brands** like Apple, Samsung, and Lenovo (ThinkPad) since late-2018. Its messy dataset contains 108k transactions recorded across 4 years (2019-2022) and includes performance insights that the data team seeks to help the company discover.
 
-Business questions answered through SQL queries: [here](https://github.com/Shree-Analyst/ECommerce_Trends_Analysis/blob/main/Data/Queries.sql) | ERD: [here](https://github.com/Shree-Analyst/ECommerce_Trends_Analysis/blob/main/Data/ERD.png)
+Partnering with the Head of Operations, the Data Analytics Team at WebOne reports on findings related to sales trends across seasons, loyalty program performance, product performance, and refund rates. Recommendations enable the Finance, Marketing, Product, and Operations Teams to improve day-to-day processes and deliver top-notch products to customers around the world.
+
+**Business questions impacting the Finance, Marketing, Product, and Operations Teams:**
+1. **What were our overall sales trends?**
+2. **How has the loyalty program performed and should we continue it?**
+3. **How can we optimise our portfolio based on product performance?**
+4. **What are our refund rates and how do they compare with the e-commerce industry?**
+
+The project's **North Star Metrics** are:
+- **Revenue**: Total sales in USD.
+- **Order Count**: Number of orders fulfilled.
+- **Average Order Value (AOV)**: Sale in USD per order.
+
+View dataset ERD [here](https://raw.githubusercontent.com/Shree-Analyst/WebOne_ECommerce_Analysis/main/ERD.png).
+
+<div style="page-break-after: always"></div>
 
 # Executive Summary
 
-### Overview of Findings
+<center> <img alt="Combi chart showing AOV & Revenue per month over 4Y" src="https://raw.githubusercontent.com/Shree-Analyst/WebOne_ECommerce_Analysis/main/Visualisations/Sales%20Trends%20-%20Revenue%20%26%20AOV.png" > </center>
 
-North Star Metrics: **$28M Revenue | 108k Order Count | $260 AOV**
+North Star Metric overview: **Revenue - $28M**, **Order Count - 108k**, **AOV - $260**.
 
-<p align="center">
-  <img src="./Data/Sales Trends - Revenue & AOV.png" alt="Sales Trends - Revenue & AOV" width="50%">
-</p>
+**Revenue growth was anchored to the Covid-19 pandemic**: 162% Revenue growth in 2020 over 2019. Cheaper & fewer orders then followed, with Revenue dropping by 50% & AOV by 23% by 2022.
+- **Non-Members purchasing laptops drove the pandemic surge**, with 76% of Revenue in 2019-2020 coming from this segment, indicating one-off purchases.
+- **By contrast, post-pandemic, Loyalty Members sustained company Revenues** contributing 54% Revenue across 2021 & 2022 and purchasing pricier products than Non-Members.
+- **4 core products drove 96% of Revenue**: 27" 4K Gaming Monitor ($9.9m), Apple Airpods ($7.7m), Apple Macbook Air Laptop ($6.3m), & Lenovo ThinkPad Laptop ($3.2m).
+- **All core products had high refund rates**, with laptop refund rates rising to 16%.
 
-- Revenue grew steadily on launch and reached a record $10.1M in 2020, driven by pandemic spending on laptops and gaming monitors from non-loyalty customers. Following this peak, laptop prices gradually dropped and customers started to order less, leading to a sharp fall across all metrics which culminated in an unusually poor Q4-2022.
-- Loyalty program members brought in 39% of Revenue across all 4 years which increases to 54% between 2021-2022. Meanwhile, 42% of non-members' $17.1M Revenue comes from 2020 alone, suggesting one-off, pandemic-driven purchases. Additionally, member AOV remained consistent around $250 from 2021 through Q3-2022, while non-member AOV dipped from $375 in Q4-2020 to $213 in Q3-2022.
-- Overall Refund Rate: ~7.8%. Customers sought refunds at higher rates for pricier products like laptops (16%) & gaming monitor (9.5%). Loyalty members sought double the refunds (11.4%) as non-members (5.8%), particularly for Airpods & gaming monitor.
+Based on our findings, we recommend the following:
+- **Product Team - introduce mid-tier laptops** to capture price sensitive demand and stabilise category Revenue around $2m.
+- **Marketing Team - introduce membership tiers** to strengthen loyalty program, expected to increase Loyalty Member Revenue & Order Count.
+- **Operations Team - implement stringent quality control checks on laptops** to reduce refunds by 35%.
 
-### Recommendations
+<div style="page-break-after: always"></div>
 
-Based on the above findings, we recommend the following:
-- Revise 2023-2024 Revenue forecasts to pre-pandemic baseline levels and focus on sustained growth in subsequent years, for the Finance Team.
-- Optimise product portfolio to focus on 4 main products, add complimentary branded accessories, and expand into mid-range price tiers, for the Product & Sales Teams.
-- Strengthen loyalty program by adding preferred products, premium pricing tiers, and sending satisfaction surveys, for the Marketing Team.
-- Work with suppliers to address quality control issues, negotiate acceptable refund levels & appropriate penalties, and revise company's refund policy by charging restocking fee for non-defective refunds, for the Operations & Finance Teams.
+# Insights Deep-Dive
+## Insight 1: Trends in Revenue indicate long-term demand normalisation
 
-# Insights Deep Dive
-### Sales Trends:
+<center> <img alt="Heatmap showing quarter-over-quarter growth rates" src="https://raw.githubusercontent.com/Shree-Analyst/WebOne_ECommerce_Analysis/main/Visualisations/Quarterly%20Revenue%20Growth.png" width=95%> </center>
 
-<table align="center" width="100%">
-  <tr>
-    <td><img src="./Data/Product Revenues.png" alt="Area chart showing revenues per product" width="100%"></td>
-    <td><img src="./Data/Marketing Channels.png" alt="Area chart showing revenues per marketing channel" width="100%"></td>
-  </tr>
-</table>
+- **2020 was WebOne's best-performing year for Revenue ($10.1m) & AOV ($300), while for Order Count, it was 2021 (35k)**. The company's inaugural year, 2019, was the worst performer for Revenue ($3.8m), AOV ($230), and Order Count (17k).
+- Quarterly Revenue growth peaked in Q2-2020 (+53%). Sustained growth continued to Q4-2020, its best-performing quarter with Revenue $3m.
+- In 2022, Revenue shrunk in all quarters, especially in Q4 (-48%). **Q4-2022 was the company's worst performing quarter with $648k Revenue**.
 
-* **4 Products make up 96% of Revenue:** 27" 4K Gaming Monitor, Apple Airpods (most popular - 48k Order Count), two laptops (Apple Macbook Air, Lenovo ThinkPad). Laptop Revenue doubled to $1.3M in Q4-2020 from $0.54M in Q4-2019, and then fell 90% to $0.13M in Q4-2022. Apple products made up 52% of Revenue in 2020-2021, which fell to 41% in Q4-2022. WebOne's core products are in clear decline which make it critical to immediately conduct competitor pricing analysis. The Product Team can look into introducing mid-tier laptops to capture demand from price sensitive segments.
-  
-* **Direct marketing brings in 83% of Revenue:** SEO performs well and brings in a higher AOV ($277) than email ($180). Order placed on the web page further contribute 97% of Revenue, and mobile orders contribute the remaining 3%, signalling underperforming mobile channels that represent wasted marketing expenditure. The Marketing Team could audit the mobile app's user experience & ROI, eliminating it entirely if required.
-  
-* **12 countries make up 80% of Revenue.** WebOne's global reach to 192 countries is concentrated in a handful of key markets: US (47% of Revenue), UK, Canada, Japan, Germany, Australia, Brazil, France, Spain, Netherlands, Italy, and India. AOV in the APAC region is the highest ($278), followed by North America ($260), EMEA ($258), and LATAM ($231), signalling price sensitivity and varying product preferences by region. The marketing team could focus expenditure in these countries while the product & sales team could look into creating region-specific bundles based on AOV.
+For the Finance Team, this **demand normalisation back to pre-pandemic levels should be reflected in 2023 forecasts** to avoid overspending and spiraling losses.
 
+<div style="page-break-after: always"></div>
 
-### Seasonality & Growth Rates:
+### Demand Normalisation Impacts Seasonality
+<center> <img alt="Candle chart showing month-over-month growth rates" src="https://raw.githubusercontent.com/Shree-Analyst/WebOne_ECommerce_Analysis/main/Visualisations/Monthly%20Growth%20Rates.png" width=95% > </center>
 
-<table align="center" width="100%">
-  <tr>
-    <td><img src="./Data/Monthly Growth Rates.png" alt="Monthly Growth Rates" width="100%"></td>
-    <td><img src="./Data/Quarterly Regional Revenue Growth.png" alt="Quarterly Regional Revenue Growth" width="100%"></td>
-  </tr>
-</table>
+- **Order Count grew between 12% & 20% during September in 2019, 2020, & 2021. However, it fell by 15% during September in 2022**.
+- Contraction magnitude in October 2022 (-47%) was considerably higher than previous years (-21% to -27%).
+- Growth in November & December 2022 was consistent with past seasonal patterns. However, Order Count grew from a lower base (825 in Oct-22) than in previous years (1.2k-2.6k in Oct-19 to Oct-21), leading to the exceptionally poor Q4-2022.
 
-* **Pandemic spending spike was an anomaly.** Consistent monthly growth from March to August 2020 suggests exceptionally high demand for electronics during the pandemic. Yearly growth rates (2019-2020): 100% Order Count | 160% Revenue | 30% AOV; suggest that company growth was anchored to 2020 and a subsequent return to normalcy in 2022 to pre-pandemic levels. The Finance Team could look into appropriately revising 2023-2024 forecasts based on 2019 levels.
+For the Marketing Team, **Back-to-School & Holiday seasons represent important spending surges during the year**. They should increase marketing around this time to better respond to demand in the future and avoid a repeat of the underwhelming Q4-2022.
 
-* **Seasonality and anomalously poor Q4-2022:** Best-performing months were November & December, and September for more premium products from 2019-2021. Worst months were consistently February and October. These patterns did not carry through to 2022: September was flat and October had a sharper dip of -55% (Revenue) which made Q4-2022 the company's worst performing quarter. The company should investigate contributing factors behind this decline in further detail.
+<div style="page-break-after: always"></div>
 
-* **Consistent regional trends with differences in magnitude.** Evidenced by similar quarterly percent changes in Revenue, all 4 regions experience similar overall trends. Comparing Revenues across regions highlights differences in spending patterns: EMEA drove a strong Q4-2020 with 27% increase in Revenue. LATAM grew 18% in Revenue across Q2 & Q3-2022. Targeted marketing efforts through localised campaigns could lead to capitalising on region-specific differences.
+## Insight 2: Loyalty Members Generate More Revenue Share Across 2021-2022, Pointing to Improved Loyalty Program Performance
 
+<center> <img alt="100% Area chart showing member vs non-member Revenue (top) & OC (bottom)" src="https://raw.githubusercontent.com/Shree-Analyst/WebOne_ECommerce_Analysis/main/Visualisations/Loyalty%20Rev_OC.png" width=95% > </center>
 
-### Loyalty Program Performance:
+- Across 2021 & 2022, Loyalty Members contributed $7.6m to Revenue at an AOV of $245 whereas Non-Members contributed $6.5m Revenue at an AOV of $239.
+- By contrast, across 2019 & 2020, Loyalty Members contributed $3.4m Revenue at an AOV of $205 whereas Non-Members contributed $10.6m Revenue at an AOV of $288.
+- Loyalty Member Revenue & Order Count share once again dropped below 50% by Q4-2022, impacting Back-to-School & Holiday Season sales.
 
-<p align="center">
-  <img src="./Data/Loyalty Rev_AOV.png" alt="Loyalty Revenue and AOV" width="50%">
-</p>
+For the Marketing Team, this **123% improvement in loyalty program performance over 4 years underlines the program's long-term value to the company** and suggests a need to re-engage with Loyalty Members to correct the trend reversal from Q4-2022.
 
-* **Diverging loyalty & non-loyalty sales trends:** Loyalty members made up 54% of Revenue in 2021-2022 with non-loyalty members driving pandemic spending in 2020, highlighting long-term value of the loyalty program to the company. Calculating Customer Lifetime Value (CLV) and understanding this segment's needs could lead to further improvements in the loyalty program to drive Revenue & AOV growth.
+<div style="page-break-after: always"></div>
 
-<p align="center">
-  <img src="./Data/Loyalty Channels.png" alt="Loyalty Marketing Channels" width="50%">
-</p>
+### Marketing Channels Performance Improves for Loyalty Members & Declines for Non-Members
 
-* **Email and direct marketing lucrative for loyalty members:** Marketing channel performance diverges over time for members & non-members. From 2019-2020 levels, direct marketing Revenue to non-members declined by $3.5M and increased by $3M to members. Email marketing AOV from members ($228) is twice as high as non-members ($105), and Revenue performance has significantly diverged. The Marketing Team may reallocate non-member email marketing spend to member retention programs.
+<center> <img alt="Stacked bar chart showing 19-20 & 21-22 trends in email & direct marketing channels across loyalty status" src="https://raw.githubusercontent.com/Shree-Analyst/WebOne_ECommerce_Analysis/main/Visualisations/Loyalty%20Channels.png" width=95% > </center>
 
-<p align="center">
-  <img src="./Data/Loyalty Products Performance.png" alt="Loyalty Product Performance" width="50%">
-</p>
+- **Direct marketing makes up 83% of Revenue** followed by Email (12%) across 2019-2022. 36% ($8.4m) of Direct & 65% ($2.2m) of Email Revenues are from Loyalty Members.
+- In 2021 & 2022, Loyalty Members converted via direct & email channels generated more value than in 2019 & 2020: 119% (direct) & 134% (email) increase in Revenue, and 53% ($231, email) increase in AOV, but AOV decreased by 3% to $252 from the direct channel.
+- In 2021 & 2022, Non-Members converted via direct & email channels generated less value than in 2019 & 2020. 40% (direct) & 25% (email) decrease in Revenue, and 11% ($271, direct) & 51% ($109, email) decrease in AOV.
 
-* **Accessories preferred by loyalty program members:** Airpods & Webcam are more popular among loyalty members. They also pay more on average for Airpods, Gaming Monitor, & Macbook. This may be due to non-members receiving deep discounts to encourage purchases, which requires further analysis. Meanwhile, the Product & Sales Teams may consider expanding accessories to brand-specific cases, keyboards, etc., and creating product + accessory bundles targeted to loyalty members. They may also consider creating premium membership tiers with access for specific premium products reserved to high-spending loyalty customers.
+For the Marketing & Product Teams, **overall direct channel performance and high Non-Member AOV suggests well-positioned products successfully reached Non-Members through SEO** and instigated one-off purchases. The recent divergence in channel performance suggests that **product positioning is now more attractive for Loyalty Members and has become less attractive to Non-Members**.
 
-### Refund Rates:
+<div style="page-break-after: always"></div>
 
-<p align="center">
-  <img src="./Data/Product Refund Rates.png" alt="Product Refund Rates" width="50%">
-</p>
+## Insight 3: Four Core Products Drive 96% of Revenue
 
-* **High refund rates cause important lost revenues.** Overall Refund Rate (7.6%-8%) is skewed towards pricier products: laptops (16% - just under 1 in 6), Gaming Monitor (9.7%), iPhone (11%). Since this leads to high levels of lost revenues, the Operations Team could implement quality control checks on main products and negotiate guarantees with suppliers to reduce the overall refund rates.
+<center> <img alt="Multiple Line chart showing revenue across 4 products" src="https://raw.githubusercontent.com/Shree-Analyst/WebOne_ECommerce_Analysis/main/Visualisations/Product%20Revenues.png" width=95% > </center>
 
-<p align="center">
-  <img src="./Data/Loyalty Refund Rates.png" alt="Loyalty Refund Rates" width="35%">
-</p>
+- The 27" 4K Gaming Monitor, Apple Airpods Headphones, Apple Macbook Air Laptop, and Lenovo ThinkPad Laptop together consistently made up 96% of Revenue.
+- **Revenue share of the two laptops reached 42% ($4.2m) in 2020, and fell to 27% ($1.4m) by 2022**, because of fewer orders. AOVs tend to be high ($1.1k-$1.6k), suggesting reduced demand for high-end products.
+- Revenue share of the Samsung Webcam & Apple iPhone have consistently been low (1.3% & 0.8% respectively), suggesting potential room for growth.
 
-* **Loyalty program members seek more refunds.** Loyalty members seek almost double (11.4%) the number of refunds as non-members (5.8%). There are no significant differences in delivery times between loyalty and non-loyalty customers. The Sales Team could implement post-purchase check-in calls with customers to detect issues early, and the Marketing Team could implement 10% restocking fees on members if products are not found to be defective.
+For the Product Team, **a loss in Revenue for high-value products implies increased price sensitivity**. WebOne may need to divest away from high-value products to reach a more sensitive market segment.
 
-<p align="center">
-  <img src="./Data/Loyalty_Products Refund Rate Table.png" alt="Loyalty Products Refund Rate Table" width="50%">
-</p>
+<div style="page-break-after: always"></div>
 
-* **Different problem products for loyalty members and non-members:** As highlighted in the table above, loyalty members & non-members have different 'problem products', and these are skewed towards high AOV products. The sales pipeline from supplier to group-wise refunds requires deeper analysis to spot patterns and take appropriate preventive action to reduce lost revenue in the future.
+### Loyalty Members Prefer Accessories & Pay More than Non-Members
 
+<center> <img alt="Scatterplot showing member vs non-member differences in preferences & sensitivity" src ="https://raw.githubusercontent.com/Shree-Analyst/WebOne_ECommerce_Analysis/main/Visualisations/Loyalty%20Products.png" width=95% > </center>
 
-# Recommendations:
+- Loyalty Members pay 15% more (AOV $457) for the Gaming Monitor & 9% more for the Macbook (AOV $1721) on average than non-members (AOV $397 & $1574 respectively).
+- Non-Members contributed to 90% ($5.6m) of Revenue for the Macbook. Loyalty Member Revenue share was more competitive for other core products (48%).
+- Loyalty Members purchase more accessories (Airpods, Webcam) than Non-Members, and have 0 iPhone purchases.
 
-Based on the insights and findings above, we recommend the following: 
+For the Product & Marketing Teams, this suggests that **the company may have used deep discounts to attract one-off purchases from Non-Members**.
 
-* **Set Revenue Forecasts using Pre-Pandemic Baseline:** Revenue peaked in 2020 ($10.1M), 42% of loyalty non-member Revenue came from 2020 alone, and Q4-2022 was the worst quarter since inception. WebOne Gadgets has, so far, relied on one-time pandemic spikes to grow, and its current declining Revenue trajectory poses a threat to profitablity. Therefore, we recommend that the Finance Team revise 2023-2024 Revenue forecasts to stabilise Revenue to a pre-pandemic baseline and then focus on sustained growth for the following years.
+<div style="page-break-after: always"></div>
 
-* **Optimise Product Portfolio:** The 4 core products that make up 96% of Revenue have shrunk since 2020. The Product Team should immediately conduct competitor pricing benchmarks. We recommend the Product & Sales Teams to eliminate products outside these core products, introduce complimentary accessories (keyboards, branded cases, chargers, headphones), and expand into a mid-price tier to capture demand from price sensitive segments.
-  
-* **Focus on High-Value Markets:** 12 countries account for 80% of Revenue and regional differences in AOV represent untapped market opportunities. We therefore recommend the Marketing Team to introduce market-specific campaigns in these countries geared towards specific pricing tiers (eg., APAC - Premium), to boost market penetration in these countries and regions.
-  
-* **Leverage Seasonal Patterns:** Orders consistently peaked during September, November, and December. We recommend the Sales & Product Teams to create back-to-school & holiday product bundles, and the Marketing Team to boost early marketing efforts towards the end of August & October to capitalise on increased seasonal demand. We recommend the Operations Team to appropriately stock up on inventory to ensure timely delivery and customer satisfaction during peak months.
-  
-* **Strengthen Loyalty Program:** Loyalty program members made up 54% of Revenue in 2021-2022 with a higher AOV during this time than non-members. Owing to strong long-term performance, recommend the Marketing Team to further strengthen the loyalty program. Besides adding accessories that loyalty members prefer, we recommend reallocating marketing resources to focus on customer retention and calculating a CLV metric to estimate the overall value of retaining a customer for the company. We also recommend the Marketing Team to launch a targeted survey to better understand & respond to the needs of this segment.
-  
-* **Address Quality Control Issues & Refund Policy:** Laptop refund rates were 16% and overall refund rates 7.6%-8%. Lost revenue was higher because pricier products have higher refund rates, signalling issues in quality control and refund policy. We therefore recommend the Operations Team to implement quality control checks on inventory purchase for top products and negotiate acceptable baselines & appropriate penalties with suppliers. We also recommend the Finance & Marketing Teams to revise refund policy and implement restocking fees in case of non-defective products.
+## Insight 4: Core Products Suffer From High Refund Rates Leading to Lost Revenue Over 10%
 
+<center> <img alt="Gantt chart showing product-wise refund rates" src="https://raw.githubusercontent.com/Shree-Analyst/WebOne_ECommerce_Analysis/main/Visualisations/Product%20Refund%20Rates.png" width=95% > </center>
 
-# Assumptions and Caveats:
+The **overall refund rate was estimated at 7.8%**. [While lower than industry average of 10%](https://www.channelwill.com/blogs/ecommerce-return-rates/), a deeper dive presents a different story:
 
-Throughout the analysis, multiple assumptions were made to manage challenges with the data:
+- **The refund rate for laptops was 16%** which suggests quality control issues.
+- **AOV for refunded products was high, at $416**. Compared to overall AOV ($260), it's clear that customers are unhappier with & seek refunds for pricier products, leading to lost revenue over 10%.
 
-* No recorded refunds after 14/07/2021 & refund timestamps recorded 2 years after purchase timestamps. Data until this point (69k orders) was used to estimate true refund rates.
-  
-* Joining all 4 tables together caused 169 orders (0.16%) to be duplicated. These were included in the analysis.
+<center> <img src="https://raw.githubusercontent.com/Shree-Analyst/WebOne_ECommerce_Analysis/main/Visualisations/Loyalty_Products%20Refund%20Rate%20Table.png" alt="Table showing product-wise refund rates for loyalty members" width=50%> </center>
 
-These require further investigation with the data engineering team to address the underlying data collection & validation issues.
+- **Loyalty Members sought nearly twice as many refunds as Non-Members: 11.3% vs 5.8%**.
+- Apart from Apple Macbook Air Laptops, Loyalty Members sought more refunds for core products.
+
+While this may suggest overly lenient refund policies in the loyalty program, **a combination of higher prices paid & higher refunds sought by Loyalty Members suggests frequent displeasure with the quality of products they receive**. Therefore, for the Operations Team, this suggests potential quality control issues with most products, especially laptops.
+
+<div style="page-break-after: always"></div>
+
+# Recommendations
+Our insights enable the **Marketing, Product, Finance, and Operations Teams to stabilise Revenue, improve loyalty program performance, introduce new revenue streams, and reduce refunds**. Based on our findings, we recommend the following:
+
+- **Revise 2023 forecasts to pre-pandemic baseline**: due to long-term demand normalisation, we recommend the Finance Team to revise Revenue forecasts for 2023 to the pre-pandemic baseline of $3.9m. This is **expected to avoid over-spending in 2023 and shield from spiraling losses**.
+- **Introduce mid-tier laptops & tablets**: to capture price-sensitive demand due to falling AOV & laptop Revenue, we recommend the Product Team to introduce mid-tier laptops & mid-range products like tablets. This would **stabilise Laptop Revenues around $2m and add Revenue from tablets**.
+- **Increase marketing efforts leading up to Back-to-School and Holiday seasons**: to capture increased demand, we recommend the Marketing Team to increase marketing efforts in mid-August and mid-October. This would **increase seasonal Revenue by 50%** and bring it back to the pre-pandemic baseline.
+- **Re-engage with Loyalty Members through member-only products**: to respond to reduced member sales in Q4-2022, we recommend the Marketing & Product Teams to introduce member-only products like accessories (keyboards, headset) or gaming consoles. This is **expected to increase Loyalty Member Revenue & AOV**.
+- **Introduce Membership tiers to the loyalty program**: we recommend the Marketing Team to introduce tiered membership to attract loyalty members across various levels of price sensitivity. This is **expected to increase loyalty program signups & Revenue**.
+- **Implement stringent quality control checks for laptops**: we recommend the Operations Team to implement strict quality control checks on goods reception and prior to shipping. This would **reduce laptop refund rates by 35% to be aligned with the industry benchmark of 10%**.
+
+<div style="page-break-after: always"></div>
+
+# Caveats & Next Steps
+
+We acknowledge the following limitations in our analysis which require work with the Data Engineering Team:
+- 169 (0.2%) duplicate entries were found which were included in the analysis, slightly compromising accuracy.
+- 1.3% of records under Marketing Channel were blank, which were imputed with 'unknown'.
+- No refunds were recorded after 14/07/2021. Refund Rate estimates were calculated based on 69k (64%) orders out of 108k total records.
+
+We recommend to work with the Marketing & Operations Teams to dive deeper into this data:
+- Calcaulte Customer Lifetime Value (CLV) & conduct RFM (Recency-Frequency-Monetary Value) segmentation analysis for each customer.
+- Introduce country & region as dimensions for targeted geographical analyses.
+- Introduce suppliers as a dimension to investigate high refund rates.
+- Estimate churn probability for each customer and refund probability for each order, working with the Data Science Team.
+
+# Appendix
+
+View SQL queries used to answer stakeholder questions [here](https://github.com/Shree-Analyst/WebOne_ECommerce_Analysis/blob/main/Queries.sql).
+
+Tools used: Excel, SQL, Tableau, VSCode, GitHub.
+
+Technical process:
+- used CLEAN framework to conceptualise & clean data. Noted issues encountered in documentation.
+- used SCAN framework to conduct exploratory analysis in Excel using calculated functions, charts, and pivot tables.
+- used SQL in BigQuery to answer ad-hoc stakeholder questions and prepare data for statistical testing.
+- used Excel & confidence interval formulas to estimate real refund rates.
+- used Tableau to create & format relevant charts to be included in report.
+- used VSCode to write README in markdown & uploaded to GitHub.
