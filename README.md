@@ -3,8 +3,7 @@
 | Summary Component | Description |
 | :-------------: | ------ |
 | **Dataset Size** | 108k |
-| **Time Range** | 2019-2022 |
-| **Tools Used** | Excel, SQL, Tableau, VSCode |
+| **Tools Used** | Excel, SQL, Tableau |
 | **Key Metrics** | Revenue, Order Count, Average Order Value (AOV) |
 | **Outcome** | Identified 35% refund rate reduction opportunity for the Operations Team and laptop Revenue stabilisation opportunity at $2m for the Product Team. |
 
